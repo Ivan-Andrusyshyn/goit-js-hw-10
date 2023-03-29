@@ -40,14 +40,14 @@ function makeup(response) {
 }
 const dataCardTemp = response => {
   return response
-    .map(el => {
+    .map(({ name, flags, capital, population, languages }) => {
       return `<h1 class="item">
-      <img src="${el.flags.svg}" width="40px"
-        alt="${el.name.official}">${el.name.official}</h1>
+      <img src="${flags.svg}" width="40px"
+        alt="${name.official}">${name.official}</h1>
         <ul>
-          <li>Capital: ${el.capital}</li>
-          <li>Population: ${el.population}</li>
-          <li>Languages: ${Object.values(el.languages)}</li>
+          <li>Capital: ${capital}</li>
+          <li>Population: ${population}</li>
+          <li>Languages: ${Object.values(languages)}</li>
         </ul>`;
     })
     .join('');
