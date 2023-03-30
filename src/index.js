@@ -18,6 +18,7 @@ function searchCountry(e) {
   fetchCountries(countryName)
     .then(response => {
       ul.innerHTML = '';
+      if (countryName == '') return;
       if (response.length > 10) {
         cleanMarking();
         return Notiflix.Notify.info(
