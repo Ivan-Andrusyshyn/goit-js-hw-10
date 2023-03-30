@@ -7,7 +7,6 @@ const DEBOUNCE_DELAY = 300;
 const ul = document.querySelector('.country-list');
 const inputCountry = document.querySelector('#search-box');
 const divCountry = document.querySelector('.country-info');
-
 inputCountry.addEventListener('input', debounce(searchCountry, DEBOUNCE_DELAY));
 function searchCountry(e) {
   let countryName = e.target.value.trim();
@@ -26,7 +25,8 @@ function searchCountry(e) {
     })
     .catch(err => {
       cleanMarking();
-      if (err.message === '404') {
+      if (inputCountry.value == '') return;
+      else if (err.message === '404') {
         inputCountry.value = '';
         return Notiflix.Notify.failure(
           'Oops, there is no country with that name'
